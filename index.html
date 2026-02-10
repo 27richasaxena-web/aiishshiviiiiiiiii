@@ -11,16 +11,16 @@
             justify-content: center; align-items: center; background-color: #ffe4e1;
             font-family: 'Segoe UI', sans-serif; overflow: hidden; text-align: center;
         }
-        h1 { color: #d63384; font-size: 2.5rem; margin: 15px 0; z-index: 10; }
+        h1 { color: #d63384; font-size: 2.2rem; margin: 15px 0; z-index: 10; }
         
         /* Puppy GIF Styling */
-        .gif-container { margin-bottom: 10px; height: 220px; display: flex; align-items: center; justify-content: center; }
-        #puppyGif { width: 200px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .gif-container { margin-bottom: 20px; height: 200px; display: flex; align-items: center; justify-content: center; }
+        #puppyGif { width: 180px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 
         .buttons { display: flex; gap: 20px; z-index: 10; position: relative; height: 70px; width: 100%; justify-content: center; align-items: center; }
         button {
-            padding: 15px 35px; font-size: 1.2rem; border: none; border-radius: 50px;
-            cursor: pointer; transition: 0.2s; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 12px 30px; font-size: 1.1rem; border: none; border-radius: 50px;
+            cursor: pointer; transition: 0.2s; font-weight: bold;
         }
         #yesBtn { background-color: #ff4d6d; color: white; }
         #noBtn { background-color: #ffffff; color: #ff4d6d; position: absolute; }
@@ -38,8 +38,8 @@
 <body>
 
     <div class="gif-container">
-        <!-- Starts with Begging Puppy Eyes -->
-        <img id="puppyGif" src="https://media.giphy.com" alt="Puppy Eyes">
+        <!-- Direct link to sad/begging puppy -->
+        <img id="puppyGif" src="https://media3.giphy.com" alt="Begging Puppy">
     </div>
     
     <h1 id="question">Will You Be My Valentine?</h1>
@@ -50,7 +50,7 @@
     </div>
 
     <script>
-        // Floating Heart Animation
+        // 1. Floating Hearts
         setInterval(() => {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -61,31 +61,26 @@
             setTimeout(() => heart.remove(), 5000);
         }, 300);
 
-        // Runaway Button Logic
+        // 2. Runaway "No" Button
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - 150);
-            const y = Math.random() * (window.innerHeight - 100);
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
             noBtn.style.position = 'fixed';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
         }
 
-        // Success Action
+        // 3. Celebratory Switch
         function celebrate() {
             document.getElementById('question').innerText = "Yay! I knew you'd say yes! ❤️";
             
-            // Switch to Celebratory Happy Puppy
+            // Switch to excited celebratory puppy
             const puppy = document.getElementById('puppyGif');
             puppy.src = "https://media.giphy.com";
             
             document.getElementById('buttonContainer').style.display = 'none';
-            
-            confetti({
-                particleCount: 200,
-                spread: 90,
-                origin: { y: 0.6 }
-            });
+            confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 } });
         }
     </script>
 </body>
